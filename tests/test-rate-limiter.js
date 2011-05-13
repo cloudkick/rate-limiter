@@ -60,8 +60,9 @@ exports['test_new_limit_invalid_method'] = function(test, assert) {
   var method1 = 'invalid-method';
 
   try {
-    limiter.addlimit(path1, method1, 10, 100, false);
+    limiter.addLimit(path1, method1, 10, 100, false);
   } catch(err) {
+    assert.match(err.message, /invalid method/i);
     assert.ok(true);
     test.finish();
     return;
