@@ -15,8 +15,14 @@
  * limitations under the License.
  */
 
+var http = require('http');
+
 var misc = require('util/misc');
+
+var express = require('express');
+
 var RateLimiter = require('../lib/index').RateLimiter;
+var expressMiddleware = require('../lib/index').expressMiddleware;
 
 exports['test_add_new_limit_success'] = function(test, assert) {
   var limiter = new RateLimiter();
@@ -309,4 +315,50 @@ exports['test_processLimit_request_dropped'] = function(test, assert) {
   }
 
   test.finish();
+};
+
+exports['disabled_test_expressMiddleware'] = function(test, assert) {
+  var i, app;
+  var port = 9832;
+  var answersCount = 0;
+  var requestsCount = 0;
+  var rules = [
+    ['/limited', 'all', 2, 15, true]
+  ];
+
+  var options = {
+    host: '127.0.0.1',
+    port: port,
+    path: '/limited'
+  };
+
+  function handleRequest(req, res) {
+    answersCount++;
+    res.end('bye');
+  }
+
+  function finish() {
+    assert.equal(requestsCount, 10);
+    assert.equal(answersCount, 2);
+    app.close();
+  }
+
+  function onResponse() {
+    requestsCount++;
+  }
+
+  setTimeout(finish, 2000);
+
+  app = express.createServer();
+  app.configure(function() {
+    app.use(expressMiddleware(rules));
+  });
+
+  app.get('/limited', handleRequest);
+
+  app.listen(port, '127.0.0.1', function onBound() {
+    for (i = 0; i < 10; i++) {
+      http.get(options, onResponse);
+    }
+  });
 };
