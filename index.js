@@ -15,5 +15,5 @@
  * limitations under the License.
  */
 
-exports.RateLimiter = require('./rate-limiter').RateLimiter;
-exports.expressMiddleware = require('./rate-limiter').expressMiddleware;
+exports.RateLimiter = require('./lib/rate-limiter').RateLimiter;
+exports.expressMiddleware = require('./lib/rate-limiter').expressMiddleware;
