@@ -1,6 +1,6 @@
 CWD=`pwd`
 
 test:
-	whiskey --tests "${CWD}/tests/test-rate-limiter.js"
+	node_modules/.bin/whiskey --tests "${CWD}/tests/test-rate-limiter.js"
 
 .PHONY: test
