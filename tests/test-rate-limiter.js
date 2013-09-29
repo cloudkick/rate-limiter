@@ -17,7 +17,7 @@
 
 var http = require('http');
 
-var misc = require('util/misc');
+var misc = require('whiskey/lib/util');
 
 var express = require('express');
 
