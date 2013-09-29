@@ -1,7 +1,7 @@
 {
   "name": "rate-limiter",
   "description": "A module for rate limiting HTTP(s) requests based on the client IP address.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Cloudkick, Inc. <tomaz+npm@cloudkick.com> http://www.cloudkick.com",
   "keywords": [ "rate", "limiter", "rate limiting", "flood prevention"],
   "homepage": "https://github.com/cloudkick/rate-limiter",
