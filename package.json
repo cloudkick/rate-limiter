@@ -24,7 +24,7 @@
     "sprintf": ">= 0.1.1"
   },
   "devDependencies": {
-    "whiskey": "= 0.3.2",
+    "whiskey": "0.8.x",
     "express": "= 2.3.4"
   },
   "engines": {
