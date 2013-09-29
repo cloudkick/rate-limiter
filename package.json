@@ -31,5 +31,9 @@
   "engines": {
     "node": ">= 0.4.0"
   },
+  "scripts": {
+    "lint": "./scripts/lint.sh",
+    "test": "make test"
+  },
   "main": "./index"
 }
