@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "whiskey": "0.8.x",
+     "jshint": "2.1.x",
     "express": "= 2.3.4"
   },
   "engines": {
