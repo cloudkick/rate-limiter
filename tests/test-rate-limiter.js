@@ -282,7 +282,7 @@ exports['test_processLimit_request_dropped'] = function(test, assert) {
   }
 
   assert.equal(wroteHeaders.length, 3);
-  assert.equal(wroteHeaders[0][0], 403);
+  assert.equal(wroteHeaders[0][0], 429);
   assert.equal(wroteResponses.length, 3);
 
   // Verify that method is checked correctly
